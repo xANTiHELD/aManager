@@ -1,0 +1,93 @@
+﻿<?xml version="1.0"?>
+<teams>
+	<team id="0" name="FC Bayern München" key="fcb">
+		<buli id="10" key="fc-bayern-muenchen" />
+		<kicker id="14" key="bayern-muenchen-14" />
+		<tm id="27" />
+	</team>
+	<team id="1" name="FC Schalke 04" key="s04">
+		<buli id="24" key="fc-schalke-04" />
+		<kicker id="2" key="fc-schalke-04-2" />
+		<tm id="33" />
+	</team>
+	<team id="2" name="1. FSV Mainz 05" key="m05">
+		<buli id="36" key="fsv-mainz-05" />
+		<kicker id="30" key="fsv-mainz-05-30" />
+		<tm id="39" />
+	</team>
+	<team id="3" name="Borussia Dortmund" key="bvb">
+		<buli id="18" key="borussia-dortmund" />
+		<kicker id="17" key="borussia-dortmund-17" />
+		<tm id="16" />
+	</team>
+	<team id="4" name="FC Augsburg" key="fca">
+		<buli id="267" key="fc-augsburg-1907" />
+		<kicker id="91" key="fc-augsburg-91" />
+		<tm id="167" />
+	</team>
+	<team id="5" name="1. FC Nürnberg" key="fcn">
+		<buli id="22" key="1-fc-nuernberg" />
+		<kicker id="81" key="1-fc-nuernberg-81" />
+		<tm id="4" />
+	</team>
+	<team id="6" name="1899 Hoffenheim" key="hof">
+		<buli id="3084" key="1899-hoffenheim" />
+		<kicker id="3209" key="1899-hoffenheim-3209" />
+		<tm id="533" />
+	</team>
+	<team id="7" name="Hannover 96" key="h96">
+		<buli id="44" key="hannover-96" />
+		<kicker id="58" key="hannover-96-58" />
+		<tm id="42" />
+	</team>
+	<team id="8" name="Eintracht Frankfurt" key="ffm">
+		<buli id="12" key="eintracht-frankfurt" />
+		<kicker id="32" key="eintracht-frankfurt-32" />
+		<tm id="24" />
+	</team>
+	<team id="9" name="SV Werder Bremen" key="svw">
+		<buli id="11" key="werder-bremen" />
+		<kicker id="4" key="werder-bremen-4" />
+		<tm id="86" />
+	</team>
+	<team id="10" name="VfL Wolfsburg" key="wob">
+		<buli id="56" key="vfl-wolfsburg" />
+		<kicker id="24" key="vfl-wolfsburg-24" />
+		<tm id="82" />
+	</team>
+	<team id="11" name="Hertha BSC" key="bsc">
+		<buli id="43" key="hertha-bsc" />
+		<kicker id="29" key="hertha-bsc-29" />
+		<tm id="44" />
+	</team>
+	<team id="12" name="SC Freiburg" key="scf">
+		<buli id="33" key="sc-freiburg" />
+		<kicker id="7" key="sc-freiburg-7" />
+		<tm id="60" />
+	</team>
+	<team id="13" name="Eintracht Braunschweig" key="ebs">
+		<buli id="51" key="eintracht-braunschweig" />
+		<kicker id="41" key="eintracht-braunschweig-41" />
+		<tm id="23" />
+	</team>
+	<team id="14" name="Bayer 04 Leverkusen" key="b04">
+		<buli id="16" key="bayer-leverkusen" />
+		<kicker id="9" key="bayer-leverkusen-9" />
+		<tm id="15" />
+	</team>
+	<team id="15" name="Hamburger SV" key="hsv">
+		<buli id="13" key="hamburger-sv" />
+		<kicker id="12" key="hamburger-sv-12" />
+		<tm id="41" />
+	</team>
+	<team id="16" name="Borussia Mönchengladbach" key="bmg">
+		<buli id="17" key="borussia-moenchengladbach" />
+		<kicker id="15" key="borussia-mgladbach-15" />
+		<tm id="18" />
+	</team>
+	<team id="17" name="VfB Stuttgart" key="vfb">
+		<buli id="14" key="vfb-stuttgart" />
+		<kicker id="11" key="vfb-stuttgart-11" />
+		<tm id="79" />
+	</team>
+</teams>
