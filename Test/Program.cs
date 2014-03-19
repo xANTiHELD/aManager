@@ -1,6 +1,6 @@
 ﻿using System;
 using aManager.Database;
-using aManager.Resources;
+using aManager.Resources.Sites;
 
 namespace aManager
 {

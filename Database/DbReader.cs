@@ -1,5 +1,5 @@
 ﻿using System;
-using aManager.Resources;
+using aManager.Resources.Entities;
 using System.Collections.Generic;
 
 namespace aManager
