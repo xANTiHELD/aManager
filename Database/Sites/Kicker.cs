@@ -1,9 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Net;
-using System.Text;
+using HtmlAgilityPack;
+using aManager.Resources.Entities;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Runtime.Serialization;
 
 namespace aManager
 {
@@ -14,61 +15,44 @@ namespace aManager
 			/// <summary>
 			/// Description of KickerDe.
 			/// </summary>
-			public class Kicker
+			public class Kicker : Site
 			{
-				private void Init()
+				private string strUsername;
+				private string strPassword;
+				
+				public KickerPlayerList GetMyPlayers()
 				{
-					System.Net.ServicePointManager.Expect100Continue = false;
-					
-					String strUsername = "";
-					String strPassword = "";
 					Uri oLoginUri = new Uri("http://www.kicker.de/community/login/");
 					Uri oInteractiveBuli1 = new Uri("http://manager.kicker.de/interactive/bundesliga/meinteam/meinkader/");
 					Uri oInteractiveBuli1Day = new Uri("http://manager.kicker.de/interactive/bundesliga/meinteam/spieltagswertung/manid/0/manliga/0/spieltag/X");
-					Byte[] oData = null;
-					HttpWebRequest oRequest = null;
-					HttpWebResponse oResponse = null;
-					CookieContainer oCookies = new CookieContainer();
+					
 					NameValueCollection oParameters = new NameValueCollection();
+					oParameters.Add("nickname", this.strUsername);
+					oParameters.Add("password", this.strPassword);
 					
-					oParameters.Add("nickname", strUsername);
-					oParameters.Add("password", strPassword);
-		
-					oData = Encoding.UTF8.GetBytes(BuildQueryString(oParameters, true));
+					this.SendRequest(oLoginUri, WebRequestMethods.Http.Post, oParameters);
+					String strResponse = this.SendRequest(oInteractiveBuli1, WebRequestMethods.Http.Get);
 					
-					oRequest = WebRequest.CreateHttp(oLoginUri);
-					oRequest.CookieContainer = oCookies;
-					oRequest.Method = WebRequestMethods.Http.Post; // Try HEAD
-					oRequest.ContentType = "application/x-www-form-urlencoded";
-					oRequest.ContentLength = oData.Length;
+					HtmlDocument h = new HtmlDocument();
+					h.LoadHtml(strResponse);
 					
-					oRequest.GetRequestStream().Write(oData, 0, oData.Length);
-		
-					oResponse = (HttpWebResponse) oRequest.GetResponse();
+					HtmlNode n = h.DocumentNode.SelectSingleNode("//div[@id='fbmSpielfeldWrapper']/script[3]");
+					String s = n.InnerText;
 					
-					oRequest = WebRequest.CreateHttp(oInteractiveBuli1);
-					oRequest.CookieContainer = oCookies;
-					oRequest.Method = WebRequestMethods.Http.Get;
+					Int32 i = s.IndexOf("{'players'");
+					s = s.Substring(i);
+					i = s.IndexOf("\";");
+					s = s.Substring(0, i);
 					
-					String strResponse = new StreamReader(oRequest.GetResponse().GetResponseStream()).ReadToEnd();
+					KickerPlayerList players = Newtonsoft.Json.JsonConvert.DeserializeObject<KickerPlayerList>(s);
+
+					return players;
 				}
-					
-				private string BuildQueryString(NameValueCollection collection, bool post = false)
+				
+				public Kicker(string username, string password, DbReader reader) : base(reader) 
 				{
-					String strQueryString = String.Empty;
-					
-					if(!post) strQueryString = "?";
-					
-					if(collection.Count == 0) return strQueryString;
-					
-					foreach(String key in collection)
-					{
-						strQueryString += WebUtility.UrlEncode(key) + "=" + WebUtility.UrlEncode(collection[key]) + "&";
-					}
-					
-					strQueryString = strQueryString.Remove(strQueryString.Length - 1);
-					
-					return strQueryString;
+					this.strUsername = username;
+					this.strPassword = password;
 				}
 			}
 		}

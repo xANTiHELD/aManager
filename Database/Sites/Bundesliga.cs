@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Net;
 using HtmlAgilityPack;
 using aManager.Resources.Entities;
@@ -15,31 +14,23 @@ namespace aManager
 			/// <summary>
 			/// Description of BundesligaDe.
 			/// </summary>
-			public class Bundesliga
+			public class Bundesliga : Site
 			{
+				int iSeasonYear = 2013;
+				int iLigaId = 51;
+				
 				public List<Match> GetMatches(int matchDay)
 				{
-					Int32 iSeasonYear = 2013;
-					Int32 iMatchDay = matchDay;
 					List<Match> oMatches = new List<Match>();
 					
-					Uri oMatchDayUri = new Uri("http://www.bundesliga.de/de/inc/livebox/liga/" + iSeasonYear + "/" + iMatchDay + ".html");
-	
-					HttpWebRequest oRequest = null;
-					HttpWebResponse oResponse = null;
+					Uri oMatchDayUri = new Uri("http://www.bundesliga.de/de/inc/livebox/liga/" + this.iSeasonYear + "/" + matchDay + ".html");
 					
-					oRequest = WebRequest.CreateHttp(oMatchDayUri);
-					oRequest.Method = WebRequestMethods.Http.Get;
-					
-					String strResponse = new StreamReader(oRequest.GetResponse().GetResponseStream()).ReadToEnd();
+					String strResponse = this.SendRequest(oMatchDayUri, WebRequestMethods.Http.Get);
 					
 					HtmlDocument h = new HtmlDocument();
 					h.LoadHtml(strResponse);
 					
 					HtmlNodeCollection nc = h.DocumentNode.SelectNodes("//ul[@class='clearfix']/li");
-					
-					DbReader db = new DbReader();
-					
 					
 					foreach(HtmlNode n in nc)
 					{
@@ -49,7 +40,7 @@ namespace aManager
 						
 						foreach(HtmlNode m in mc)
 						{
-							Team team = db.GetTeamByBundesligaId(Convert.ToInt32(h.DocumentNode.SelectSingleNode(m.XPath + "/img[1]").Attributes["data-teamid"].Value));
+							Team team = this.oReader.GetTeamByBundesligaId(Convert.ToInt32(h.DocumentNode.SelectSingleNode(m.XPath + "/img[1]").Attributes["data-teamid"].Value));
 							match.PushTeam(team);
 							
 							Int32 score;
@@ -62,6 +53,27 @@ namespace aManager
 					
 					return oMatches;
 				}
+				
+				public Player GetPlayerByReferenceName(string referenceName, int teamId)
+				{
+					Uri oTeamUri = new Uri("http://www.bundesliga.de/data/feed/" + this.iLigaId + "/" + this.iSeasonYear + "/team_players_dfl/team_players_dfl_" + teamId + ".xml");
+					
+					String strResponse = this.SendRequest(oTeamUri, WebRequestMethods.Http.Get, this.UselessRandomNumberParameter());
+					
+					strResponse = strResponse.Replace("../specification/dtd/sportsml-core.dtd", String.Empty);
+					
+					return this.oReader.GetBundesligaPlayerByReferenceName(referenceName, strResponse);
+				}
+				
+				private NameValueCollection UselessRandomNumberParameter()
+				{
+					NameValueCollection oParameters = new NameValueCollection();
+					oParameters.Add("cb", new Random().Next(10000, 1000000).ToString());
+					
+					return oParameters;
+				}
+				
+				public Bundesliga(DbReader reader) : base(reader) {}
 			}
 		}
 	}
