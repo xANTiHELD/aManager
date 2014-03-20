@@ -20,7 +20,18 @@ namespace aManager
 				Console.Write("Kicker.de Account\nUsername: ");
 				String strUsr = Console.ReadLine();
 				Console.Write("Password: ");
-				String strPwd = Console.ReadLine();
+				String strPwd = String.Empty;
+				
+				char c = Console.ReadKey(true).KeyChar;
+				
+				while((int) c != 13)
+				{
+					Console.Write("*");
+					strPwd += c.ToString();
+					c = Console.ReadKey(true).KeyChar;
+				}
+				
+				Console.WriteLine("\n\nLoading . . .");
 				
 				Kicker k = new Kicker(strUsr, strPwd, db);
 				PlayerMerger pm = new PlayerMerger(db, bl);
