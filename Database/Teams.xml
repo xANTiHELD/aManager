@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0"?>
 <teams>
-	<team id="" kicker-id="" bundesliga-id="" transfermarkt-id="" key="" bundesliga-key="" kicker-key="" name="" />
-	<team id="0" kicker-id="14" bundesliga-id="10" transfermarkt-id="27" key="fcb" bundesliga-key="fc-bayern-muenchen" kicker-key"bayern-muenchen-14" name="FC Bayern München" />
-	<team id="1" kicker-id="2" bundesliga-id="24" transfermarkt-id="33" key="s04" bundesliga-key="fc-schalke-04" kicker-key"fc-schalke-04-2" name="FC Schalke 04" />
-	<team id="2" kicker-id="30" bundesliga-id="36" transfermarkt-id="39" key="m05" bundesliga-key="fsv-mainz-05" kicker-key"fsv-mainz-05-30" name="1. FSV Mainz 05" />
+	<team id="0" kicker-id="14" bundesliga-id="10" transfermarkt-id="27" key="fcb" bundesliga-key="fc-bayern-muenchen" kicker-key="bayern-muenchen-14" name="FC Bayern München" />
+	<team id="1" kicker-id="2" bundesliga-id="24" transfermarkt-id="33" key="s04" bundesliga-key="fc-schalke-04" kicker-key="fc-schalke-04-2" name="FC Schalke 04" />
+	<team id="2" kicker-id="30" bundesliga-id="36" transfermarkt-id="39" key="m05" bundesliga-key="fsv-mainz-05" kicker-key="fsv-mainz-05-30" name="1. FSV Mainz 05" />
 	<team id="3" kicker-id="17" bundesliga-id="18" transfermarkt-id="16" key="bvb" bundesliga-key="borussia-dortmund" kicker-key="borussia-dortmund-17" name="Borussia Dortmund" />
 	<team id="4" kicker-id="91" bundesliga-id="267" transfermarkt-id="167" key="fca" bundesliga-key="fc-augsburg-1907" kicker-key="fc-augsburg-91" name="FC Augsburg" />
 	<team id="5" kicker-id="81" bundesliga-id="22" transfermarkt-id="4" key="fcn" bundesliga-key="1-fc-nuernberg" kicker-key="1-fc-nuernberg-81" name="1. FC Nürnberg" />

@@ -7,7 +7,7 @@ using System.Collections.Specialized;
 
 namespace aManager
 {
-	namespace Resources
+	namespace Database
 	{
 		namespace Sites
 		{

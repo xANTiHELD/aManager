@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml;
 using aManager.Resources.Entities;
 using System.Collections.Generic;
 
@@ -11,6 +12,8 @@ namespace aManager
 		/// </summary>
 		public class DbReader
 		{
+			XmlReader oXmlReader;
+			
 			public Team GetTeamByManagerId(int id)
 			{
 				
@@ -27,6 +30,21 @@ namespace aManager
 			
 			public Team GetTeamByBundesligaId(int id)
 			{
+				this.Init();
+				
+				while(oXmlReader.Read())
+				{
+					if(oXmlReader.NodeType == XmlNodeType.Element && oXmlReader.Name == "team")
+						if(oXmlReader.GetAttribute("bundesliga-id") == id.ToString())
+							return new Team(Convert.ToInt32(oXmlReader.GetAttribute("id")), 
+							                Convert.ToInt32(oXmlReader.GetAttribute("kicker-id")),
+			                                Convert.ToInt32(oXmlReader.GetAttribute("bundesliga-id")),
+			                                Convert.ToInt32(oXmlReader.GetAttribute("transfermarkt-id")), 
+			                                oXmlReader.GetAttribute("key"), 
+			                                oXmlReader.GetAttribute("kicker-key"),
+			                                oXmlReader.GetAttribute("bundesliga-key"),
+			                                oXmlReader.GetAttribute("name"));
+				}
 				
 				return null;
 			}
@@ -40,7 +58,7 @@ namespace aManager
 			
 			private void Init()
 			{
-
+				this.oXmlReader = new XmlTextReader(".\\Teams.xml");
 			}
 			
 			public DbReader()

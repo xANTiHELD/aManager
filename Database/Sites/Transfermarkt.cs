@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace aManager
 {
-	namespace Resources
+	namespace Database
 	{
 		namespace Sites
 		{
