@@ -30,10 +30,10 @@ namespace aManager
 					else
 						p = new Player(k.LastName);
 						
-					p.SetKickerId(k.Id);
-					p.SetKickerKey(k.Key);
-					p.SetKickerPointsTotal(k.PointsTotal);
-					p.SetTeam(team);
+					p.KickerId = k.Id;
+					p.KickerKey = k.Key;
+					p.KickerPointsTotal = k.PointsTotal;
+					p.Team = team;
 
 					managerList.Add(p);
 				}

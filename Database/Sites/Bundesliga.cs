@@ -62,7 +62,11 @@ namespace aManager
 					
 					strResponse = strResponse.Replace("../specification/dtd/sportsml-core.dtd", String.Empty);
 					
-					return this.oReader.GetBundesligaPlayerByReferenceName(referenceName, strResponse);
+					Player p = this.oReader.GetBundesligaPlayerByReferenceName(referenceName, strResponse);
+					
+					p.Stats = this.oReader.GetPlayerStatsByBundesligaId(p.BundesligaId, strResponse);
+					
+					return p;
 				}
 				
 				private NameValueCollection UselessRandomNumberParameter()

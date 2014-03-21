@@ -58,6 +58,15 @@
     <Compile Include="Entities\Match.cs" />
     <Compile Include="Entities\KickerPlayer.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\Stats.cs" />
+    <Compile Include="Entities\StatsDuels.cs" />
+    <Compile Include="Entities\StatsFoul.cs" />
+    <Compile Include="Entities\StatsMovement.cs" />
+    <Compile Include="Entities\StatsGoal.cs" />
+    <Compile Include="Entities\StatsGoalkeeper.cs" />
+    <Compile Include="Entities\StatsOther.cs" />
+    <Compile Include="Entities\StatsPassing.cs" />
+    <Compile Include="Entities\StatsShooting.cs" />
     <Compile Include="Entities\Team.cs" />
     <Compile Include="IdentityType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

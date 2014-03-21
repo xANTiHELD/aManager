@@ -2,6 +2,7 @@
 using System.Xml;
 using aManager.Resources.Entities;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace aManager
 {
@@ -12,6 +13,37 @@ namespace aManager
 		/// </summary>
 		public class DbReader
 		{
+			public Stats GetPlayerStatsByBundesligaId(int id, string xml)
+			{
+				XmlDocument oXml = new XmlDocument();
+				oXml.LoadXml(xml);
+				NameValueCollection oAttributes = new NameValueCollection();
+				
+				XmlNode n = oXml.SelectSingleNode("//player-metadata[@player-key='" + id + "']/../player-stats/player-stats-soccer");
+
+				foreach(XmlAttribute x in n.ParentNode.Attributes)
+						oAttributes.Add(x.Name, x.Value);
+				
+				foreach(XmlAttribute x in n.Attributes)
+						oAttributes.Add(x.Name, x.Value);
+				
+				foreach(XmlNode c in n.ChildNodes)
+					foreach(XmlAttribute x in c.Attributes)
+							oAttributes.Add(x.Name, x.Value);
+				
+				Stats oStats = new Stats();
+				oStats.Foul = new StatsFoul(oAttributes);
+				oStats.Goalkeeper = new StatsGoalkeeper(oAttributes);
+				oStats.Duels = new StatsDuels(oAttributes);
+				oStats.Movement = new StatsMovement(oAttributes);
+				oStats.Shooting = new StatsShooting(oAttributes);
+				oStats.Goal = new StatsGoal(oAttributes);
+				oStats.Passing = new StatsPassing(oAttributes);
+				oStats.Other = new StatsOther(oAttributes);
+				
+				return oStats;
+			}
+			
 			public Player GetBundesligaPlayerByReferenceName(string referenceName, string xml)
 			{
 				referenceName = referenceName.ToLower();
@@ -48,14 +80,22 @@ namespace aManager
 				if(nodePlayer == null) 
 					return null;
 				
-				Player p = new Player(Convert.ToInt32(nodePlayer.ParentNode.Attributes["player-key"].Value),
-				                      nodePlayer.Attributes["first"].Value, 
-				                      nodePlayer.Attributes["last"].Value,
-				                      nodePlayer.Attributes["nickname"].Value, 
-				                      nodePlayer.Attributes["alias"].Value, 
-				                      Convert.ToInt32(nodePlayer.ParentNode.Attributes["uniform-number"].Value), 
-				                      nodePlayer.ParentNode.Attributes["position-regular"].Value);
-
+				Player p = new Player();
+				
+				p.BundesligaId = Convert.ToInt32(nodePlayer.ParentNode.Attributes["player-key"].Value);
+				p.FirstName = nodePlayer.Attributes["first"].Value;
+				p.LastName = nodePlayer.Attributes["last"].Value;
+				p.NickName = nodePlayer.Attributes["nickname"].Value;
+				p.Alias = nodePlayer.Attributes["alias"].Value;
+				p.JerseyNumber = Convert.ToInt32(nodePlayer.ParentNode.Attributes["uniform-number"].Value);
+				p.RegularPosition = nodePlayer.ParentNode.Attributes["position-regular"].Value;
+				p.Height = Convert.ToInt32(nodePlayer.ParentNode.Attributes["height"].Value);
+				p.Weight = Convert.ToInt32(nodePlayer.ParentNode.Attributes["weight"].Value);
+				p.Nationality = nodePlayer.ParentNode.Attributes["nationality"].Value;
+				p.NativeCountry = nodePlayer.ParentNode.Attributes["imp:native-country"].Value;
+				p.Birthplace = nodePlayer.ParentNode.Attributes["birthplace"].Value;
+				p.SetBirthdateFromTimeString(nodePlayer.ParentNode.Attributes["date-of-birth"].Value);
+				
 				return p;
 			}
 			

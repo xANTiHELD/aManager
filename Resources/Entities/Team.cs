@@ -23,49 +23,49 @@ namespace aManager
 				public int ManagerId
 				{
 					get { return this.iManagerId; }
-					private set {}
+					set { this.iManagerId = value; }
 				}
 				
 				public int KickerId
 				{
 					get { return this.iKickerId; }
-					private set {}
+					set { this.iKickerId = value; }
 				}
 				
 				public int BundesligaId
 				{
 					get { return this.iBundesligaId; }
-					private set {}
+					set { this.iBundesligaId = value; }
 				}
 				
 				public int TranfermarktId
 				{
 					get { return this.iTransfermarktId; }
-					private set {}
+					set { this.iTransfermarktId = value; }
 				}
 				
 				public string ManagerKey
 				{
 					get { return this.strManagerKey; }
-					private set {}
+					set { this.strManagerKey = value; }
 				}
 				
 				public string KickerKey
 				{
 					get { return this.strKickerKey; }
-					private set {}
+					set { this.strKickerKey = value; }
 				}
 				
 				public string BundesligaKey
 				{
 					get { return this.strBundesligaKey; }
-					private set {}
+					set { this.strBundesligaKey = value; }
 				}
 
 				public string Name
 				{
 					get { return this.strName; }
-					private set {}
+					set { this.strName = value; }
 				}
 				
 				public Team(int managerId, int kickerId, int bundesligaId, int transfermarktId, string managerKey, string kickerKey, string bundesligaKey, string name)

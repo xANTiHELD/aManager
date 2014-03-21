@@ -21,19 +21,19 @@ namespace aManager
 				public int BundesligaMatchId
 				{
 					get { return this.iBuliMatchId; }
-					private set {}
+					set { this.iBuliMatchId = value; }
 				}
 				
 				public int ScoreHome
 				{
 					get { return this.iScoreHome; }
-					private set {}
+					set { this.iScoreHome = value; }
 				}
 				
 				public int ScoreAway
 				{
 					get { return this.iScoreAway; }
-					private set {}
+					set { this.iScoreAway = value; }
 				}
 				
 				public string ScoreHomeString
@@ -63,90 +63,60 @@ namespace aManager
 				public Team TeamHome
 				{
 					get { return this.oTeamHome; }
-					private set {}
+					set { this.oTeamHome = value; }
 				}
 				
 				public Team TeamAway
 				{
 					get { return this.oTeamAway; }
-					private set {}
+					set { this.oTeamAway = value; }
 				}
 				
 				public DateTime Schedule
 				{
 					get { return this.oSchedule; }
-					private set {}
+					set { this.oSchedule = value; }
 				}
 				
-				public void SetBundesligaMatchId(int bundesligaMatchId)
+				public void SetScheduleByTimestamp(int timestamp)
 				{
-					this.iBuliMatchId = bundesligaMatchId;
-				}
-				
-				public void SetScoreHome(int scoreHome)
-				{
-					this.iScoreHome = scoreHome;
-				}
-				
-				public void SetScoreAway(int scoreAway)
-				{
-					this.iScoreAway = scoreAway;
-				}
-				
-				public void SetTeamHome(Team teamHome)
-				{
-					this.oTeamHome = teamHome;
-				}
-				
-				public void SetTeamAway(Team teamAway)
-				{
-					this.oTeamAway = teamAway;
-				}
-				
-				public void SetSchedule(DateTime schedule)
-				{
-					this.oSchedule = schedule;
-				}
-				
-				public void SetSchedule(int schedule)
-				{
-					this.oSchedule = this.DateTimeFromTimestamp(schedule);
+					this.oSchedule = this.DateTimeFromTimestamp(timestamp);
 				}
 				
 				public void PushTeam(Team team)
 				{
 					if(this.oTeamHome == null)
 					{
-						this.SetTeamHome(team);
+						this.oTeamHome = team;
 						return;
 					}
 					
 					if(this.oTeamAway == null)
 					{
-						this.SetTeamAway(team);
+						this.oTeamAway = team;
 						return;
 					}
 					
-					this.SetTeamAway(this.oTeamHome);
-					this.SetTeamHome(team);
+					this.oTeamAway = this.oTeamHome;
+					this.oTeamHome = team;
 				}
 				
 				public void PushScore(int score)
 				{
 					if(this.iScoreHome == -1)
 					{
-						this.SetScoreHome(score);
+						this.iScoreHome = score;
 						return;
 					}
 					
 					if(this.iScoreAway == -1)
 					{
-						this.SetScoreAway(score);
+						this.iScoreAway = score;
 						return;
 					}
 					
-					this.SetScoreAway(this.iScoreHome);
-					this.SetScoreHome(score);
+					this.iScoreAway = this.iScoreHome;
+					this.iScoreHome = score;
 				}
 				
 				private DateTime DateTimeFromTimestamp(int timestamp)

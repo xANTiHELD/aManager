@@ -34,6 +34,14 @@ namespace aManager
 				Console.WriteLine("\n\nLoading . . .");
 				
 				Kicker k = new Kicker(strUsr, strPwd, db);
+				
+				if(!k.LoggedIn)
+				{
+					Console.WriteLine("Could not login. Wrong credentials?");
+					Console.ReadKey(true);
+					return;
+				}
+				
 				PlayerMerger pm = new PlayerMerger(db, bl);
 				
 				List<Player> pl = pm.MergeWithBundesliga(k.GetMyPlayers());

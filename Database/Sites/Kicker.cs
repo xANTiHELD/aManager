@@ -19,18 +19,39 @@ namespace aManager
 			{
 				private string strUsername;
 				private string strPassword;
+				private bool bLoggedIn = false;
 				
-				public KickerPlayerList GetMyPlayers()
+				public Boolean LoggedIn
+				{
+					get { return this.bLoggedIn; }
+					private set {}
+				}
+				
+				private Boolean Login(string username, string password)
 				{
 					Uri oLoginUri = new Uri("http://www.kicker.de/community/login/");
-					Uri oInteractiveBuli1 = new Uri("http://manager.kicker.de/interactive/bundesliga/meinteam/meinkader/");
-					Uri oInteractiveBuli1Day = new Uri("http://manager.kicker.de/interactive/bundesliga/meinteam/spieltagswertung/manid/0/manliga/0/spieltag/X");
-					
 					NameValueCollection oParameters = new NameValueCollection();
+					
 					oParameters.Add("nickname", this.strUsername);
 					oParameters.Add("password", this.strPassword);
 					
 					this.SendRequest(oLoginUri, WebRequestMethods.Http.Post, oParameters);
+					
+					if(this.oCookies.Count != 0)
+						this.bLoggedIn = true;
+					else 
+						this.bLoggedIn = false;
+					
+					return this.bLoggedIn;
+				}
+				
+				public KickerPlayerList GetMyPlayers()
+				{
+					if(!this.bLoggedIn) return null;
+					
+					Uri oInteractiveBuli1 = new Uri("http://manager.kicker.de/interactive/bundesliga/meinteam/meinkader/");
+					Uri oInteractiveBuli1Day = new Uri("http://manager.kicker.de/interactive/bundesliga/meinteam/spieltagswertung/manid/0/manliga/0/spieltag/X");
+
 					String strResponse = this.SendRequest(oInteractiveBuli1, WebRequestMethods.Http.Get);
 					
 					HtmlDocument h = new HtmlDocument();
@@ -53,6 +74,8 @@ namespace aManager
 				{
 					this.strUsername = username;
 					this.strPassword = password;
+					
+					this.Login(this.strUsername, this.strPassword);
 				}
 			}
 		}
