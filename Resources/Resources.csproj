@@ -58,22 +58,20 @@
     <Compile Include="Entities\Match.cs" />
     <Compile Include="Entities\KickerPlayer.cs" />
     <Compile Include="Entities\Player.cs" />
-    <Compile Include="Entities\Stats.cs" />
-    <Compile Include="Entities\StatsDuels.cs" />
-    <Compile Include="Entities\StatsFoul.cs" />
-    <Compile Include="Entities\StatsMovement.cs" />
-    <Compile Include="Entities\StatsGoal.cs" />
-    <Compile Include="Entities\StatsGoalkeeper.cs" />
-    <Compile Include="Entities\StatsOther.cs" />
-    <Compile Include="Entities\StatsPassing.cs" />
-    <Compile Include="Entities\StatsShooting.cs" />
+    <Compile Include="Entities\Statistics.cs" />
+    <Compile Include="Entities\Stats\Duels.cs" />
+    <Compile Include="Entities\Stats\Foul.cs" />
+    <Compile Include="Entities\Stats\Movement.cs" />
+    <Compile Include="Entities\Stats\Goal.cs" />
+    <Compile Include="Entities\Stats\Goalkeeper.cs" />
+    <Compile Include="Entities\Stats\Other.cs" />
+    <Compile Include="Entities\Stats\Passing.cs" />
+    <Compile Include="Entities\Stats\Shooting.cs" />
     <Compile Include="Entities\Team.cs" />
     <Compile Include="IdentityType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

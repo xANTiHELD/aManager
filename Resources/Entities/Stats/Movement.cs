@@ -6,12 +6,12 @@ namespace aManager
 {
 	namespace Resources
 	{
-		namespace Entities
+        namespace Entities.Stats
 		{
 			/// <summary>
 			/// Description of StatsMovement.
 			/// </summary>
-			public class StatsMovement
+			public class Movement
 			{
 				private double dDistance = -1;
 				private double dAverageSpeed = -1;
@@ -90,9 +90,9 @@ namespace aManager
 					this.SetAttribute(attributes.Get("imp:tracking-fast-runs-distance"), out this.dFastRunsDistance);
 				}
 				
-				public StatsMovement() {}
+				public Movement() {}
 				
-				public StatsMovement(NameValueCollection attributes)
+				public Movement(NameValueCollection attributes)
 				{
 					this.SetAttributes(attributes);
 				}

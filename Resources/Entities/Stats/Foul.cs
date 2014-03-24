@@ -5,12 +5,12 @@ namespace aManager
 {
 	namespace Resources
 	{
-		namespace Entities
+        namespace Entities.Stats
 		{
 			/// <summary>
 			/// Description of StatsFoul.
 			/// </summary>
-			public class StatsFoul
+			public class Foul
 			{
 				private int iFoulsCommited = -1;
 				private int iFoulsSuffered = -1;
@@ -72,9 +72,9 @@ namespace aManager
 					   this.SetAttribute(attributes.Get("imp:yellow-red-cards"), out this.iYellowRedCards);
 				}
 				
-				public StatsFoul() {}
+				public Foul() {}
 				
-				public StatsFoul(NameValueCollection attributes)
+				public Foul(NameValueCollection attributes)
 				{
 					this.SetAttributes(attributes);
 				}

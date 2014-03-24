@@ -29,7 +29,7 @@ namespace aManager
 				string strNativeCountry;
 				string strBirthplace;
 				DateTime oBirthdate;
-				Stats oStats;
+				Statistics oStats;
 				
 				public int Height
 				{
@@ -62,7 +62,7 @@ namespace aManager
 					set { this.oBirthdate = value; }
 				}
 				
-				public Stats Stats
+				public Statistics Stats
 				{
 					get { return this.oStats; }
 					set { this.oStats = value; }

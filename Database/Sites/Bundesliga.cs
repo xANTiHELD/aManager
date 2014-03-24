@@ -22,7 +22,7 @@ namespace aManager
 				public List<Match> GetMatches(int matchDay)
 				{
 					List<Match> oMatches = new List<Match>();
-					
+                    //TODO: http://www.bundesliga.de/data/feed/51/2013/schedule/schedule.xml?cb=176638
 					Uri oMatchDayUri = new Uri("http://www.bundesliga.de/de/inc/livebox/liga/" + this.iSeasonYear + "/" + matchDay + ".html");
 					
 					String strResponse = this.SendRequest(oMatchDayUri, WebRequestMethods.Http.Get);

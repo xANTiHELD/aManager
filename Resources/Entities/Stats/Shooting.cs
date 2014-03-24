@@ -5,12 +5,12 @@ namespace aManager
 {
 	namespace Resources
 	{
-		namespace Entities
+        namespace Entities.Stats
 		{
 			/// <summary>
 			/// Description of StatsShooting.
 			/// </summary>
-			public class StatsShooting
+			public class Shooting
 			{
 				private int iShots = -1;
 				private int iShotsOnGoal = -1;
@@ -127,9 +127,9 @@ namespace aManager
 							this.iShotsPenalties = -1;
 				}
 				
-				public StatsShooting() {}
+				public Shooting() {}
 				
-				public StatsShooting(NameValueCollection attributes)
+				public Shooting(NameValueCollection attributes)
 				{
 					this.SetAttributes(attributes);
 				}

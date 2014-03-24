@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml;
 using aManager.Resources.Entities;
+using aManager.Resources.Entities.Stats;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
@@ -13,7 +14,7 @@ namespace aManager
 		/// </summary>
 		public class DbReader
 		{
-			public Stats GetPlayerStatsByBundesligaId(int id, string xml)
+			public Statistics GetPlayerStatsByBundesligaId(int id, string xml)
 			{
 				XmlDocument oXml = new XmlDocument();
 				oXml.LoadXml(xml);
@@ -30,16 +31,16 @@ namespace aManager
 				foreach(XmlNode c in n.ChildNodes)
 					foreach(XmlAttribute x in c.Attributes)
 							oAttributes.Add(x.Name, x.Value);
-				
-				Stats oStats = new Stats();
-				oStats.Foul = new StatsFoul(oAttributes);
-				oStats.Goalkeeper = new StatsGoalkeeper(oAttributes);
-				oStats.Duels = new StatsDuels(oAttributes);
-				oStats.Movement = new StatsMovement(oAttributes);
-				oStats.Shooting = new StatsShooting(oAttributes);
-				oStats.Goal = new StatsGoal(oAttributes);
-				oStats.Passing = new StatsPassing(oAttributes);
-				oStats.Other = new StatsOther(oAttributes);
+
+                Statistics oStats = new Statistics();
+				oStats.Foul = new Foul(oAttributes);
+				oStats.Goalkeeper = new Goalkeeper(oAttributes);
+				oStats.Duels = new Duels(oAttributes);
+				oStats.Movement = new Movement(oAttributes);
+				oStats.Shooting = new Shooting(oAttributes);
+				oStats.Goal = new Goal(oAttributes);
+				oStats.Passing = new Passing(oAttributes);
+				oStats.Other = new Other(oAttributes);
 				
 				return oStats;
 			}

@@ -6,12 +6,12 @@ namespace aManager
 {
 	namespace Resources
 	{
-		namespace Entities
+        namespace Entities.Stats
 		{
 			/// <summary>
 			/// Description of StatsGoalkeeper.
 			/// </summary>
-			public class StatsGoalkeeper
+			public class Goalkeeper
 			{
 				private int iSaves = -1;
 				private int iGoalsAgainst = -1;
@@ -130,9 +130,9 @@ namespace aManager
 						this.SetAttribute(attributes.Get("imp:saves-penalty-shot"), out this.iPenaltySaves);
 				}
 				
-				public StatsGoalkeeper() {}
+				public Goalkeeper() {}
 				
-				public StatsGoalkeeper(NameValueCollection attributes)
+				public Goalkeeper(NameValueCollection attributes)
 				{
 					this.SetAttributes(attributes);
 				}

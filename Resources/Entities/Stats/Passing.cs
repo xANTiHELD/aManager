@@ -6,12 +6,12 @@ namespace aManager
 {
 	namespace Resources
 	{
-		namespace Entities
+        namespace Entities.Stats
 		{
 			/// <summary>
 			/// Description of StatsPassing.
 			/// </summary>
-			public class StatsPassing
+			public class Passing
 			{
 				private int iPasses = -1;
 				private int iPassesCompleted = -1;
@@ -104,9 +104,9 @@ namespace aManager
 					this.SetAttribute(attributes.Get("imp:passes-short-total"), out this.iPassesShort);
 				}
 				
-				public StatsPassing() {}
+				public Passing() {}
 				
-				public StatsPassing(NameValueCollection attributes)
+				public Passing(NameValueCollection attributes)
 				{
 					this.SetAttributes(attributes);
 				}

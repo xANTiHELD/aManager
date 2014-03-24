@@ -1,5 +1,5 @@
 ﻿using System;
-using aManager.Resources.Entities;
+using aManager.Resources.Entities.Stats;
 
 namespace aManager
 {
@@ -10,66 +10,66 @@ namespace aManager
 			/// <summary>
 			/// Description of Stats.
 			/// </summary>
-			public class Stats
+			public class Statistics
 			{
-				private StatsFoul oFoul = null;
-				private StatsGoalkeeper oGoalkeeper = null;
-				private StatsPassing oPassing = null;
-				private StatsShooting oShooting = null;
-				private StatsDuels oDuels = null;
-				private StatsGoal oGoal = null;
-				private StatsMovement oMovement = null;
-				private StatsOther oOther = null;
+				private Foul oFoul = null;
+				private Goalkeeper oGoalkeeper = null;
+				private Passing oPassing = null;
+				private Shooting oShooting = null;
+				private Duels oDuels = null;
+				private Goal oGoal = null;
+				private Movement oMovement = null;
+				private Other oOther = null;
 				
-				public StatsFoul Foul
+				public Foul Foul
 				{
 					get { return this.oFoul; }
 					set { this.oFoul = value; }
 				}
 				
-				public StatsGoalkeeper Goalkeeper
+				public Goalkeeper Goalkeeper
 				{
 					get { return this.oGoalkeeper; }
 					set { this.oGoalkeeper = value; }
 				}
 				
-				public StatsPassing Passing
+				public Passing Passing
 				{
 					get { return this.oPassing; }
 					set { this.oPassing = value; }
 				}
 				
-				public StatsShooting Shooting
+				public Shooting Shooting
 				{
 					get { return this.oShooting; }
 					set { this.oShooting = value; }
 				}
 				
-				public StatsDuels Duels
+				public Duels Duels
 				{
 					get { return this.oDuels; }
 					set { this.oDuels = value; }
 				}
 				
-				public StatsGoal Goal
+				public Goal Goal
 				{
 					get { return this.oGoal; }
 					set { this.oGoal = value; }
 				}
 				
-				public StatsMovement Movement
+				public Movement Movement
 				{
 					get { return this.oMovement; }
 					set { this.oMovement = value; }
 				}
 				
-				public StatsOther Other
+				public Other Other
 				{
 					get { return this.oOther; }
 					set { this.oOther = value; }
 				}
 				
-				public Stats() {}
+				public Statistics() {}
 			}
 		}
 	}

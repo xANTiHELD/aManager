@@ -6,12 +6,12 @@ namespace aManager
 {
 	namespace Resources
 	{
-		namespace Entities
+		namespace Entities.Stats
 		{
 			/// <summary>
 			/// Description of StatsDuels.
 			/// </summary>
-			public class StatsDuels
+			public class Duels
 			{
 				private int iDuelsWon = -1;
 				private int iDuelsWonGround = -1;
@@ -96,9 +96,9 @@ namespace aManager
 					this.SetAttribute(attributes.Get("imp:duels-won-percentage"), out this.dDuelsWonPercentage);
 				}
 				
-				public StatsDuels() {}
+				public Duels() {}
 				
-				public StatsDuels(NameValueCollection attributes)
+				public Duels(NameValueCollection attributes)
 				{
 					this.SetAttributes(attributes);
 				}

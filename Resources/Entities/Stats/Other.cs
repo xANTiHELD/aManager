@@ -5,12 +5,12 @@ namespace aManager
 {
 	namespace Resources
 	{
-		namespace Entities
+        namespace Entities.Stats
 		{
 			/// <summary>
 			/// Description of StatsOther.
 			/// </summary>
-			public class StatsOther
+			public class Other
 			{
 				private int iBallsTouched = -1;
 				private int iOffsides = -1;
@@ -99,9 +99,9 @@ namespace aManager
 					this.SetAttribute(attributes.Get("imp:miss-chance"), out this.iMissedChances);
 				}
 				
-				public StatsOther() {}
+				public Other() {}
 				
-				public StatsOther(NameValueCollection attributes)
+				public Other(NameValueCollection attributes)
 				{
 					this.SetAttributes(attributes);
 				}

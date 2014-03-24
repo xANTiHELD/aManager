@@ -5,12 +5,12 @@ namespace aManager
 {
 	namespace Resources
 	{
-		namespace Entities
+        namespace Entities.Stats
 		{
 			/// <summary>
 			/// Description of StatsGoal.
 			/// </summary>
-			public class StatsGoal
+			public class Goal
 			{
 				private int iScore = -1;
 				private int iAssists = -1;
@@ -92,9 +92,9 @@ namespace aManager
 					this.SetAttribute(attributes.Get("imp:own-goal"), out this.iOwnGoal);
 				}
 				
-				public StatsGoal() {}
+				public Goal() {}
 				
-				public StatsGoal(NameValueCollection attributes)
+				public Goal(NameValueCollection attributes)
 				{
 					this.SetAttributes(attributes);
 				}
