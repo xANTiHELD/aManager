@@ -33,6 +33,7 @@ namespace aManager
 					p.KickerId = k.Id;
 					p.KickerKey = k.Key;
 					p.KickerPointsTotal = k.PointsTotal;
+					p.KickerIsOnField = k.IsOnField;
 					p.Team = team;
 
 					managerList.Add(p);

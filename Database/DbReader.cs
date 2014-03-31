@@ -59,6 +59,10 @@ namespace aManager
 				{
 					int iProbability = 0;
 					
+					// TODO: Increase probability
+					//		 - ReferenceName found check if SPACE or string termination is behind 
+					//		   and/or prior 
+					
 					if(n.Attributes["last"].Value.ToLower().IndexOf(referenceName) != -1)
 						iProbability++;
 					

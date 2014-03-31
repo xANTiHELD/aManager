@@ -1,6 +1,5 @@
 ﻿using System;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace aManager
 {
@@ -13,7 +12,14 @@ namespace aManager
 			/// </summary>
 			public class KickerPlayer
 			{
-				int iPointsTotal;
+				private int iPointsTotal;
+				private bool bIsOnField = false;
+				
+				public bool IsOnField
+				{
+					get { return this.bIsOnField; }
+					set { this.bIsOnField = value; }
+				}
 				
 				[JsonProperty("splid")]
 			    public int Id { get; private set; }
@@ -21,6 +27,8 @@ namespace aManager
 			    //[JsonProperty("wert")]
 			    //public int MarketValue { get; private set; }
 			    
+			    // TODO: Distinguish between points earned in season and points earned for
+			    //		 your team only!
 			    [JsonProperty("pkt")]
 			    private string _PointsTotal 
 			    { 
@@ -45,9 +53,9 @@ namespace aManager
 			    
 			    [JsonProperty("spl")]
 			    public string LastName { get; private set; }
-			    
-			    //[JsonProperty("pos")]
-			    //public int Position { get; private set; }
+
+			    [JsonProperty("pos")]
+			    public KickerPosition Position { get; private set; }
 			    
 			    //[JsonProperty("bild")]
 			    //public string Image { get; private set; }
@@ -70,12 +78,6 @@ namespace aManager
 			    	
 			    	return Convert.ToInt32(normalized);
 			    }
-			}
-			
-			public class KickerPlayerList
-			{
-				[JsonProperty("players")]
-			    public List<KickerPlayer> Items { get; set; }
 			}
 		}
 	}

@@ -13,8 +13,20 @@ namespace aManager
 			/// </summary>
 			public abstract class Site
 			{
-				public readonly CookieContainer oCookies = new CookieContainer();
-				public readonly DbReader oReader = new DbReader();
+				protected CookieContainer oCookies = new CookieContainer();
+				protected DbReader oReader = new DbReader();
+				
+				public CookieContainer Cookies
+				{
+					get { return this.oCookies; }
+					private set {}
+				}
+				
+				public DbReader DbReader
+				{
+					get { return this.oReader; }
+					private set {}
+				}
 				
 				public string SendRequest(Uri uri, string method, NameValueCollection parameters = null)
 				{

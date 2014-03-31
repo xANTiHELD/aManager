@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
-    <ProjectGuid>{D61A3B5E-5F14-46F2-8EED-0460E72B7DCA}</ProjectGuid>
+    <ProjectGuid>{F8CC6BBF-2C4E-45A4-A40B-77EA6F2FC89A}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>Resources</RootNamespace>
-    <AssemblyName>aManager.Resources</AssemblyName>
+    <RootNamespace>aManager.Test</RootNamespace>
+    <AssemblyName>aManager.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <NoWin32Manifest>False</NoWin32Manifest>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
@@ -42,9 +41,6 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -55,29 +51,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\KickerPlayerList.cs" />
-    <Compile Include="Entities\Match.cs" />
-    <Compile Include="Entities\KickerPlayer.cs" />
-    <Compile Include="Entities\Player.cs" />
-    <Compile Include="Entities\Statistics.cs" />
-    <Compile Include="Entities\Stats\Duels.cs" />
-    <Compile Include="Entities\Stats\Foul.cs" />
-    <Compile Include="Entities\Stats\Movement.cs" />
-    <Compile Include="Entities\Stats\Goal.cs" />
-    <Compile Include="Entities\Stats\Goalkeeper.cs" />
-    <Compile Include="Entities\Stats\Other.cs" />
-    <Compile Include="Entities\Stats\Passing.cs" />
-    <Compile Include="Entities\Stats\Shooting.cs" />
-    <Compile Include="Entities\Team.cs" />
-    <Compile Include="Entities\TestPlayer.cs" />
-    <Compile Include="IdentityType.cs" />
-    <Compile Include="KickerPosition.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="KickerFormation.cs" />
+    <None Include="app.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="packages.config" />
+    <Folder Include="Resources\Entities" />
+    <Folder Include="Resources" />
+    <Folder Include="Resources\Sites" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Entities\Player.cs" />
+    <Compile Include="Resources\Entities\Player.Kicker.cs" />
+    <Compile Include="Resources\Sites\Site.cs" />
+    <Compile Include="Resources\Sites\Kicker.cs" />
+    <Compile Include="Resources\Sites\Site.Stats.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

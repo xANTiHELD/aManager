@@ -11,6 +11,8 @@ namespace aManager
 			/// </summary>
 			public class Player
 			{
+				// TODO: static player list? Here or in Sites/Kicker?
+				
 				Team oTeam;
 				int iKickerId;
 				int iBundesligaId;
@@ -19,6 +21,7 @@ namespace aManager
 				int iJerseyNumber;
 				int iHeight;
 				int iWeight;
+				bool bKickerIsOnField;
 				string strKickerKey;
 				string strRegularPosition;
 				string strLastName;
@@ -30,6 +33,12 @@ namespace aManager
 				string strBirthplace;
 				DateTime oBirthdate;
 				Statistics oStats;
+				
+				public bool KickerIsOnField
+				{
+					get { return this.bKickerIsOnField; }
+					set { this.bKickerIsOnField = value; }
+				}
 				
 				public int Height
 				{
@@ -138,7 +147,8 @@ namespace aManager
 				{
 					int iLength = timeString.ToLower().IndexOf('t');
 					timeString = timeString.Substring(0, iLength);
-
+					
+					// TODO: Format timestring without cutting it first
 					this.oBirthdate = DateTime.ParseExact(timeString, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
 				}
 				
@@ -149,6 +159,7 @@ namespace aManager
 					this.strLastName = lastName;
 				}
 				
+				// TODO: Do we really need this currently?
 				public Player(int bundesligaId, string firstName, string lastName, string nickName, string alias, int jerseyNumber, string regularPosition)
 				{
 					this.iBundesligaId = bundesligaId;

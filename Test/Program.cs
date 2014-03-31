@@ -114,6 +114,20 @@ namespace aManager
 					Console.ForegroundColor = ConsoleColor.Gray;
 				}
 				
+				Console.WriteLine("\nYour team (on field)\nName Goals/Assists");
+				
+				foreach(Player p in pl)
+					if(p.KickerIsOnField)
+					{
+						if(p.Alias != String.Empty)
+							Console.Write(p.Alias);
+						else 
+							Console.Write(p.LastName);
+						
+						Console.WriteLine(" {0}/{1}", p.Stats.Goal.Score, p.Stats.Goal.Assists);
+					}
+						
+				
 				Console.WriteLine("\nWaiting . . .");
 				Console.ReadKey(true);
 			}
