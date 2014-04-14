@@ -7,13 +7,49 @@ namespace aManager.Test.Resources.Sites
 	/// <summary>
 	/// Description of Site.
 	/// </summary>
-	public abstract partial class Site
+	public abstract class Site
 	{
 		public CookieContainer Cookies { get; private set; }
 		
+		// TODO:
+		// Multiple overloads and abstractions of SendRequest
+		// SendRequest(string uri, string method, CookieContainer cookies, string parameterString)
+		// SendGetRequest(Uri uri, CookieContainer cookies, NameValueCollection parameters)
+		// etc.
+		
+		public static string SendGetRequest(string uriString, CookieContainer cookies, NameValueCollection parameters)
+		{
+			return SendRequest(new Uri(uriString), WebRequestMethods.Http.Get, cookies, parameters);
+		}
+		
+		public static string SendGetRequest(Uri uri, CookieContainer cookies, NameValueCollection parameters)
+		{
+			return SendRequest(uri, WebRequestMethods.Http.Get, cookies, parameters);
+		}
+		
+		public static string SendPostRequest(string uriString, CookieContainer cookies, NameValueCollection parameters)
+		{
+			return SendRequest(new Uri(uriString), WebRequestMethods.Http.Post, cookies, parameters);
+		}
+		
+		public static string SendPostRequest(Uri uri, CookieContainer cookies, NameValueCollection parameters)
+		{
+			return SendRequest(uri, WebRequestMethods.Http.Post, cookies, parameters);
+		}
+		
+		public static string SendRequest(string uriString, string method)
+		{
+			return SendRequest(new Uri(uriString), method, null, null);
+		}
+			
 		public static string SendRequest(Uri uri, string method)
 		{
 			return SendRequest(uri, method, null, null);
+		}
+		
+		public static string SendRequest(string uriString, string method, CookieContainer cookies)
+		{
+			return SendRequest(new Uri(uriString), method, cookies, null);
 		}
 		
 		public static string SendRequest(Uri uri, string method, CookieContainer cookies)
@@ -21,9 +57,19 @@ namespace aManager.Test.Resources.Sites
 			return SendRequest(uri, method, cookies, null);
 		}
 		
+		public static string SendRequest(string uriString, string method, NameValueCollection parameters)
+		{
+			return SendRequest(new Uri(uriString), method, null, parameters);
+		}
+		
 		public static string SendRequest(Uri uri, string method, NameValueCollection parameters)
 		{
 			return SendRequest(uri, method, null, parameters);
+		}
+		
+		public static string SendRequest(string uriString, string method, CookieContainer cookies, NameValueCollection parameters)
+		{
+			return SendRequest(new Uri(uriString), method, cookies, parameters);
 		}
 		
 		public static string SendRequest(Uri uri, string method, CookieContainer cookies, NameValueCollection parameters)
@@ -61,19 +107,20 @@ namespace aManager.Test.Resources.Sites
 			if(!post) strQueryString = "?";
 			
 			foreach(String key in parameters)
-			{
 				strQueryString += WebUtility.UrlEncode(key) + "=" + WebUtility.UrlEncode(parameters[key]) + "&";
-			}
 			
 			strQueryString = strQueryString.Remove(strQueryString.Length - 1);
 			
 			return strQueryString;
 		}
 		
-		protected Site()
+		static Site()
 		{
 			System.Net.ServicePointManager.Expect100Continue = false;
-					
+		}
+		
+		protected Site()
+		{
 			this.Cookies = new CookieContainer();
 		}
 	}

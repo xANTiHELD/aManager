@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Program.cs.bak" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -53,13 +54,9 @@
     <None Include="TODOS.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Database\Database.csproj">
-      <Project>{B0A18264-BA61-4B85-84FC-AA75A764F541}</Project>
-      <Name>Database</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Resources\Resources.csproj">
-      <Project>{D61A3B5E-5F14-46F2-8EED-0460E72B7DCA}</Project>
-      <Name>Resources</Name>
+    <ProjectReference Include="..\TestWorkshop\TestWorkshop.csproj">
+      <Project>{F8CC6BBF-2C4E-45A4-A40B-77EA6F2FC89A}</Project>
+      <Name>TestWorkshop</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
