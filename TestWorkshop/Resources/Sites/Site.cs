@@ -11,7 +11,7 @@ namespace aManager.Test.Resources.Sites
 	{
 		public CookieContainer Cookies { get; private set; }
 		
-		// TODO:
+		// TODO: OVERLOADS OF SENDREQUEST
 		// Multiple overloads and abstractions of SendRequest
 		// SendRequest(string uri, string method, CookieContainer cookies, string parameterString)
 		// SendGetRequest(Uri uri, CookieContainer cookies, NameValueCollection parameters)
@@ -39,22 +39,22 @@ namespace aManager.Test.Resources.Sites
 		
 		public static string SendRequest(string uriString, string method)
 		{
-			return SendRequest(new Uri(uriString), method, null, null);
+			return SendRequest(new Uri(uriString), method, null, String.Empty);
 		}
 			
 		public static string SendRequest(Uri uri, string method)
 		{
-			return SendRequest(uri, method, null, null);
+			return SendRequest(uri, method, null, String.Empty);
 		}
 		
 		public static string SendRequest(string uriString, string method, CookieContainer cookies)
 		{
-			return SendRequest(new Uri(uriString), method, cookies, null);
+			return SendRequest(new Uri(uriString), method, cookies, String.Empty);
 		}
 		
 		public static string SendRequest(Uri uri, string method, CookieContainer cookies)
 		{
-			return SendRequest(uri, method, cookies, null);
+			return SendRequest(uri, method, cookies, String.Empty);
 		}
 		
 		public static string SendRequest(string uriString, string method, NameValueCollection parameters)
@@ -74,11 +74,27 @@ namespace aManager.Test.Resources.Sites
 		
 		public static string SendRequest(Uri uri, string method, CookieContainer cookies, NameValueCollection parameters)
 		{
+			string strParameters = String.Empty;
+			
+			if(parameters != null && method == WebRequestMethods.Http.Get)
+				strParameters = BuildQueryString(parameters, false);
+			else if(parameters != null && method == WebRequestMethods.Http.Post)
+				strParameters = BuildQueryString(parameters, true);
+			
+			return SendRequest(uri, method, cookies, strParameters);
+		}
+		
+		// TODO: SECURITY ON SENDREQUEST
+		// Secure parameters before sending (System.Security.SecureString?). 
+		// Somehow...
+		
+		public static string SendRequest(Uri uri, string method, CookieContainer cookies, string parameterString)
+		{
 			HttpWebRequest oRequest = null;
 			HttpWebResponse oResponse = null;
 			
-			if(parameters != null && method == WebRequestMethods.Http.Get)
-				uri = new Uri(uri.OriginalString + BuildQueryString(parameters, false));
+			if(method == WebRequestMethods.Http.Get)
+				uri = new Uri(uri.OriginalString + parameterString);
 			
 			oRequest = WebRequest.CreateHttp(uri);
 			oRequest.CookieContainer = cookies;
@@ -88,7 +104,7 @@ namespace aManager.Test.Resources.Sites
 			if(method == WebRequestMethods.Http.Post)
 			{
 				Byte[] oData = null;
-				oData = System.Text.Encoding.UTF8.GetBytes(BuildQueryString(parameters, true));
+				oData = System.Text.Encoding.UTF8.GetBytes(parameterString);
 				oRequest.ContentType = "application/x-www-form-urlencoded";
 				oRequest.ContentLength = oData.Length;
 				oRequest.GetRequestStream().Write(oData, 0, oData.Length);

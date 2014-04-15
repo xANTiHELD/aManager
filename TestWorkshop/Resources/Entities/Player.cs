@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Specialized;
+using Newtonsoft.Json;
 
 namespace aManager.Test.Resources.Entities
 {
 		/// <summary>
 		/// Description of Player.
 		/// </summary>
-		public class Player
+		public partial class Player
 		{
 			// Concept: Player.Kicker.Id
 			// 			Player.Kicker.Stats.Shooting

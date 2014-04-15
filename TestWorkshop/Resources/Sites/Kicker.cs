@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
+using System.Security;
 using System.Collections.Specialized;
+using System.Runtime.InteropServices;
 
 namespace aManager.Test.Resources.Sites
 {
@@ -14,7 +16,9 @@ namespace aManager.Test.Resources.Sites
 			get; private set;
 		}
 		
-		public Boolean Login(string username, string password)
+		
+		
+		public bool Login(string username, string password)
 		{
 			Uri oLoginUri = new Uri("http://www.kicker.de/community/login/");
 			NameValueCollection oParameters = new NameValueCollection();

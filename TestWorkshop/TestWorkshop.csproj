@@ -41,6 +41,9 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -52,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Entities" />
@@ -60,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Entities\Player.cs" />
+    <Compile Include="Resources\Entities\Player.Kicker.cs" />
+    <Compile Include="Resources\Entities\PlayerBuilder.cs" />
     <Compile Include="Resources\Sites\Site.cs" />
     <Compile Include="Resources\Sites\Kicker.cs" />
   </ItemGroup>
