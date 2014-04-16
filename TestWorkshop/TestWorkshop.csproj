@@ -60,11 +60,12 @@
   <ItemGroup>
     <Folder Include="Resources\Entities" />
     <Folder Include="Resources" />
+    <Folder Include="Resources\Data" />
     <Folder Include="Resources\Sites" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resources\Data\Kicker.cs" />
     <Compile Include="Resources\Entities\Player.cs" />
-    <Compile Include="Resources\Entities\Player.Kicker.cs" />
     <Compile Include="Resources\Entities\PlayerBuilder.cs" />
     <Compile Include="Resources\Sites\Site.cs" />
     <Compile Include="Resources\Sites\Kicker.cs" />

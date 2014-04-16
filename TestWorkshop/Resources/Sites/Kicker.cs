@@ -11,12 +11,7 @@ namespace aManager.Test.Resources.Sites
 	/// </summary>
 	public class Kicker : Site
 	{
-		public bool LoggedIn
-		{
-			get; private set;
-		}
-		
-		
+		public bool LoggedIn { get; private set; }
 		
 		public bool Login(string username, string password)
 		{
@@ -28,10 +23,8 @@ namespace aManager.Test.Resources.Sites
 			
 			SendPostRequest(oLoginUri, this.Cookies, oParameters);
 			
-			if(this.Cookies.Count != 0)
-				this.LoggedIn = true;
-			else 
-				this.LoggedIn = false;
+			if(this.Cookies.Count != 0) this.LoggedIn = true;
+				else this.LoggedIn = false;
 			
 			return this.LoggedIn;
 		}

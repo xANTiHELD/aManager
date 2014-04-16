@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Specialized;
-using Newtonsoft.Json;
+using aManager.Test.Resources.Data;
 
 namespace aManager.Test.Resources.Entities
 {
 		/// <summary>
 		/// Description of Player.
 		/// </summary>
-		public partial class Player
+		public class Player
 		{
 			// Concept: Player.Kicker.Id
 			// 			Player.Kicker.Stats.Shooting
@@ -15,11 +15,11 @@ namespace aManager.Test.Resources.Entities
 			//			Player.Name
 			//			Player.Bundesliga.Id
 			
+			public Kicker Kicker { get; private set; }
 			
-			
-			public Player()
+			public Player(PlayerBuilder builder)
 			{
-				
+				this.Kicker = builder.Kicker;
 			}
 		}
 }
